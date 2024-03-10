@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .custom-container {
+      background-color: #b9e1fa;
+      max-width: 45%; 
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid custom-container">
+    <h1 class="display-5">IU University of Applied Sciences Computer Componenet Order Form</h1>
+    <form id="orderForm">
+      <div class="form-group">
+        <label for="cpu">CPU</label>
+        <select class="form-control" id="cpu" name="cpu">
+            <option selected>Open this select menu</option>
+            <option value="399">AMD Ryzen 7 7800X3D</option>
+            <option value="299">AMD Ryzen 7 5700X CPU</option>
+            <option value="149">AMD Ryzen 5 7600</option>
+            <option value="259">Core i7 12700KF</option>
+            <option value="599">Intel Core i9-14900K</option>
+            <option value="449">Intel Core i7-14700K</option>
+            <option value="229">Intel Core i5-12400</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gpu">GPU</label>
+        <select class="form-control" id="gpu" name="cpu">
+            <option selected>Open this select menu</option>
+            <option value="199">AMD Radeon RX 6700</option>
+            <option value="249">AMD Radeon RX 7600</option>
+            <option value="890">AMD Radeon RX 7900 XT</option>
+            <option value="455">NVIDIA GeForce RTX 4060</option>
+            <option value="549">NVIDIA GeForce RTX 4070</option>
+            <option value="649">NVIDIA GeForce RTX 4080</option>
+            <option value="1099">NVIDIA GeForce RTX 4090</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ram">RAM</label>
+        <select class="form-control" id="ram" name="cpu">
+            <option selected>Open this select menu</option>
+            <option value="89">G.Skill Ripjaws V 16GB DDR4-3600</option>
+            <option value="99">G.Skill Trident Z Royal 16GB DDR4-4000</option>
+            <option value="179">Corsair Dominator Platinum RGB 32GB DDR4-3200</option>
+            <option value="189">G.Skill Trident Z Neo 32GB DDR4-3600</option>
+        </select>
+        <br>
+        <p>Select the number of sticks:</p>
+        <input type="number" class="form-control" id="numberofRAM" name="ram" min="0" value="0">
+      </div>
+      <div class="form-group">
+        <label for="storage">SSD Storage</label>
+        <select class="form-control" id="ssd" name="cpu">
+            <option selected>Open this select menu</option>
+            <option value="80">WD Blue SN580 SSD</option>
+            <option value="85">Solidigm P44 Pro</option>
+            <option value="55">Crucial T705 NVMe</option>
+            <option value="109">WD Black SN770M</option>
+        </select>
+        <br>
+        <p>Select the number of SSD drives:</p>
+        <input type="number" class="form-control" id="numberofSSD" name="storage" min="0" value="0">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit Order</button>
+      
+    </form>
+  </div>
+  <br>
+  <div class="container-fluid custom-container">
+    <h4 id="total"></h4>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var priceCPU = document.getElementById('cpu').value;
+        var priceGPU = document.getElementById('gpu').value;
+        var priceRAM = document.getElementById('ram').value;
+        var quantityofRAM = document.getElementById('numberofRAM').value;
+        var totalRAM = priceRAM * quantityofRAM;
+        var priceSSD = document.getElementById('ssd').value;
+        var quantityofSSD = document.getElementById('numberofSSD').value;
+        var totalSSD  = priceSSD * quantityofSSD;
+
+        var total = parseInt(priceCPU) + parseInt(priceGPU) + parseInt(totalRAM) + parseInt(totalSSD);
+
+        document.getElementById('total').innerHTML = 'Total price: ' + total + '€';
+    })
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
